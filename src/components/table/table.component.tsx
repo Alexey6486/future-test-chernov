@@ -1,16 +1,27 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './table.styles.scss';
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../store/store";
-import {getDataTC, sortByEmailAC, sortByIdAC, sortByLNameAC, sortByNameAC, sortByPhoneAC, TableStateType} from "../../reducers/tableReducer";
-import { TableRowComponent } from "./tableRow/tableRow.component";
+import {
+    changePageAC,
+    getDataTC,
+    sortByEmailAC,
+    sortByIdAC,
+    sortByLNameAC,
+    sortByNameAC,
+    sortByPhoneAC,
+    TableStateType
+} from "../../reducers/tableReducer";
+import {TableRowComponent} from "./tableRow/tableRow.component";
+import {paginationFilter} from "../../utils/pagination/paginationFilter/paginationFilter";
+import {PaginationComponent} from "../../utils/pagination/pagination.component";
 
 export const TableComponent = () => {
 
     const dispatch = useDispatch();
 
     const tableState = useSelector<AppRootStateType, TableStateType>(state => state.tableReducer);
-    const {dataArray} = tableState;
+    const {dataArray, totalItems, currentPage, itemsOnPage, pagesInPortion, idSort, emailSort, lastNameSort, nameSort, phoneSort} = tableState;
 
     // sort callback returns a field name param, then switch dispatches the action
     const onSortClick = (type: string) => {
@@ -29,19 +40,49 @@ export const TableComponent = () => {
     }
 
     // table header
-    const tableHeader = {id: 'ID', email: 'Email', firstName: 'First Name', lastName: 'Last Name', phone: 'Phone', tableRowType: 'header', onSortClick: onSortClick};
+    const tableHeader = {
+        id: 'ID',
+        email: 'Email',
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        phone: 'Phone',
+        tableRowType: 'header',
+        onSortClick: onSortClick
+    };
 
-    //table data rows
+    // table data rows
     const dataArrayMap = dataArray.map(person => <TableRowComponent key={person.id} {...person}/>);
 
+    // jsx elements on current page
+    const [currPage, setCurrPage] = useState<JSX.Element[]>();
+
+    const onPageChange = (page: number) => {
+        dispatch(changePageAC(page))
+    }
+
+    // restrict fetching data from server to only initial loading
+    const [first, setFirst] = useState(true);
+
     useEffect(() => {
-        dispatch(getDataTC());
-    }, [dispatch]);
+        if (first) {
+            dispatch(getDataTC());
+            setFirst(false)
+        }
+
+        // divide users array by chunks, set the amount of users on page according to the current page and the amount users on one page
+        setCurrPage(paginationFilter(currentPage, itemsOnPage, dataArrayMap));
+
+    }, [dispatch, totalItems, idSort, emailSort, lastNameSort, nameSort, phoneSort, currentPage]);
+
 
     return (
-        <div className={'dataTable'}>
-            <TableRowComponent {...tableHeader}/>
-            {dataArrayMap}
-        </div>
+        <>
+            <div className={'dataTable'}>
+                <TableRowComponent {...tableHeader}/>
+                {currPage}
+            </div>
+            <PaginationComponent totalItems={totalItems} pagesInPortion={pagesInPortion} itemsOnPage={itemsOnPage}
+                                 currentPage={currentPage} onPageChange={onPageChange}/>
+        </>
     )
 }

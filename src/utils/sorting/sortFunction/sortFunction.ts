@@ -1,4 +1,4 @@
-import {TableStateType} from "../../reducers/tableReducer";
+import {TableStateType} from "../../../reducers/tableReducer";
 
 export const sortFunction = (sortType: string, sortState: string, state: TableStateType, sortBy: string) => {
     if (sortState === 'desc') {

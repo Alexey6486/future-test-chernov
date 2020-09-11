@@ -1,6 +1,6 @@
 import React from "react";
 import './tableRow.styles.scss';
-import {SortArrowComponent} from "../../../utils/sortArrow/sortArrow.component";
+import {SortArrowComponent} from "../../../utils/sorting/sortArrow/sortArrow.component";
 
 type PropsType = {
     id: number | string
