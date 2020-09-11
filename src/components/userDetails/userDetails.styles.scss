@@ -1,0 +1,30 @@
+@keyframes userDetailsAnimation {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.userDetails{
+    background-color: #ffffff;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    width: 100%;
+    padding: 15px;
+    animation: userDetailsAnimation forwards 200ms;
+
+    &__line{
+        display: flex;
+        margin-bottom: 10px;
+        color: #444444;
+    }
+
+    &__title{
+        margin-right: 10px;
+    }
+
+    &__text{
+        font-weight: 600;
+    }
+}

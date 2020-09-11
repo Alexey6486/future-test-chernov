@@ -11,6 +11,8 @@ const SORT_BY_NAME = 'SORT_BY_NAME';
 const SORT_BY_LNAME = 'SORT_BY_LNAME';
 const SORT_BY_EMAIL = 'SORT_BY_EMAIL';
 const SORT_BY_PHONE = 'SORT_BY_PHONE';
+const SEARCH = 'SEARCH';
+const USER = 'USER';
 
 // types
 type SortType = 'desc' | 'asc';
@@ -25,6 +27,8 @@ export interface TableStateType extends Record<string, any> {
     lastNameSort: SortType
     emailSort: SortType
     phoneSort: SortType
+    searchParam: string
+    user: number | null
 }
 
 type ThunkType = ThunkAction<void, AppRootStateType, {}, ActionTypes>;
@@ -35,7 +39,9 @@ type ActionTypes =
     | ReturnType<typeof sortByLNameAC>
     | ReturnType<typeof sortByEmailAC>
     | ReturnType<typeof sortByPhoneAC>
-    | ReturnType<typeof changePageAC>;
+    | ReturnType<typeof changePageAC>
+    | ReturnType<typeof searchAC>
+    | ReturnType<typeof userAC>;
 
 // state
 const initialState: TableStateType = {
@@ -49,6 +55,8 @@ const initialState: TableStateType = {
     lastNameSort: 'desc',
     emailSort: 'desc',
     phoneSort: 'desc',
+    searchParam: '',
+    user: null,
 };
 
 // action creators
@@ -59,6 +67,8 @@ export const sortByLNameAC = () => ({type: SORT_BY_LNAME} as const);
 export const sortByEmailAC = () => ({type: SORT_BY_EMAIL} as const);
 export const sortByPhoneAC = () => ({type: SORT_BY_PHONE} as const);
 export const changePageAC = (page: number) => ({type: CHANGE_PAGE, page} as const);
+export const searchAC = (text: string) => ({type: SEARCH, text} as const);
+export const userAC = (id: number) => ({type: USER, id} as const);
 
 // reducer
 export const tableReducer = (state: TableStateType = initialState, action: ActionTypes) => {
@@ -67,6 +77,8 @@ export const tableReducer = (state: TableStateType = initialState, action: Actio
             return {...state, dataArray: action.payload, totalItems: action.payload.length};
         case CHANGE_PAGE:
             return {...state, currentPage: action.page};
+        case SEARCH:
+            return {...state, searchParam: action.text};
         case SORT_BY_ID:
             const stateForSortById = {...state}
             sortFunction('idSort', stateForSortById.idSort, stateForSortById, 'id');
@@ -87,6 +99,8 @@ export const tableReducer = (state: TableStateType = initialState, action: Actio
             const stateForSortByPhone = {...state}
             sortFunction('phoneSort', stateForSortByPhone.phoneSort, stateForSortByPhone, 'phone');
             return stateForSortByPhone;
+        case USER:
+            return {...state, user: action.id};
         default:
             return state;
     }
