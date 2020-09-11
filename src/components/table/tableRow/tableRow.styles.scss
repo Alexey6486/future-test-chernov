@@ -1,0 +1,59 @@
+.tableRow{
+    display: flex;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+
+    &:nth-child(odd){
+        background-color: #f8f8f8;
+    }
+
+    &:hover{
+        background-color: #ffeddd;
+    }
+
+    &-header{
+        cursor: default;
+
+        .tableColumn{
+            background-color: #555555;
+            color: #ffffff;
+
+            &:hover{
+                background-color: lighten(#666666, 7%);
+            }
+        }
+    }
+
+
+}
+.tableColumn{
+    height: inherit;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    position: relative;
+
+    &-id{
+        width: 10%;
+    }
+
+    &-name{
+        width: 20%;
+    }
+
+    &-email{
+        width: 30%;
+    }
+
+    &-phone{
+        width: 20%;
+    }
+
+    .sortArrow{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+}
