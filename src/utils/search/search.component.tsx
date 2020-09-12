@@ -28,7 +28,7 @@ export const SearchComponent = (props: PropsType) => {
 
 const SearchForm: React.FC<InjectedFormProps<FormType>> = (props: PropsWithChildren<InjectedFormProps<FormType>>) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} className={'searchForm'}>
             <div className={'formGroup'}>
                 <Field component={Input} type={'text'} name={`text`}
                        placeholder={`search for...`}/>

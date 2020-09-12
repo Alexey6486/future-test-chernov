@@ -28,9 +28,7 @@ export const TableRowComponent = (props: PropsType) => {
 
     // show user details callback
     const onShowUser = () => {
-        if (showUserDetails && !onSortClick) {
-            showUserDetails(id)
-        }
+        if (showUserDetails && !onSortClick) showUserDetails(id);
     }
 
     return (

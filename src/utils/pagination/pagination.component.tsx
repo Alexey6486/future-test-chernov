@@ -13,25 +13,17 @@ export const PaginationComponent = (props: PropsType) => {
 
     const {currentPage, itemsOnPage, onPageChange, pagesInPortion, totalItems} = props;
 
-    const onPageChangeHandler = (page: number) => {
-        onPageChange(page);
-    }
+    const onPageChangeHandler = (page: number) => onPageChange(page);
 
     const totalPages = Math.ceil(totalItems / itemsOnPage);
     const totalPortions = Math.ceil(totalPages / pagesInPortion);
 
     let pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-    }
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
 
     const [portionNumber, setPortionNumber] = useState(1);
-    const nextPortion = () => {
-        setPortionNumber(portionNumber + 1)
-    };
-    const prevPortion = () => {
-        setPortionNumber(portionNumber - 1)
-    };
+    const nextPortion = () => setPortionNumber(portionNumber + 1);
+    const prevPortion = () => setPortionNumber(portionNumber - 1);
 
     const firstPageInPortion = (portionNumber - 1) * pagesInPortion + 1;
     const lastPageInPortion = portionNumber * pagesInPortion;

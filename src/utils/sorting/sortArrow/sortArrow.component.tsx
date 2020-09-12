@@ -12,9 +12,7 @@ export const SortArrowComponent = (props: PropsType) => {
     const [sortArrow, setSortArrow] = useState(false);
     const sortArrowToggleClass = sortArrow ? 'sortArrow toggle' : 'sortArrow';
 
-    const onSortClickHandler = () => {
-        onSortClick();
-    }
+    const onSortClickHandler = () => onSortClick();
 
     return (
         <div className={sortArrowToggleClass} onClick={() => {

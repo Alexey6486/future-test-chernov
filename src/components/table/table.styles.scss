@@ -4,4 +4,39 @@
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+.tableInterface{
+    display: flex;
+    justify-content: space-between;
+
+    &__btnsContainer{
+        display: flex;
+
+        button{
+            height: 30px;
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            border: none;
+            background-color: #5d626f;
+            color: #ffffff;
+            transition: background-color linear 150ms;
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
+
+            &:hover{
+                background-color: #fa9716;
+            }
+
+            &:active{
+                background-color: darken(#fa9716, 15%);
+            }
+        }
+    }
 }

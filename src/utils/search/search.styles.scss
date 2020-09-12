@@ -3,7 +3,7 @@
     margin-bottom: 15px;
 }
 
-form{
+.searchForm{
     display: flex;
 
     .formGroup{
@@ -34,6 +34,10 @@ form{
 
             &:hover{
                 background-color: #fa9716;
+            }
+
+            &:active{
+                background-color: darken(#fa9716, 15%);
             }
         }
     }

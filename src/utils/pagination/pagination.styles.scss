@@ -7,7 +7,6 @@
 
 .paginationBlock {
     display: flex;
-    margin-top: 15px;
 
     &__pre-after {
         display: flex;
@@ -22,6 +21,10 @@
                 border: 1px solid #fa9716 !important;
                 color: #fa9716 !important;
                 background-color: #ffffff !important;
+            }
+
+            &:active{
+                background-color: darken(#fa9716, 15%);
             }
         }
     }
@@ -39,6 +42,10 @@
         &.active {
             color: #ffffff;
             background-color: #fa9716;
+        }
+
+        &:active{
+            background-color: darken(#fa9716, 15%);
         }
     }
 }

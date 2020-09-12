@@ -1,0 +1,21 @@
+@keyframes errorMessageAnimation {
+    0% {
+        transform: translateY(-100px) translateX(-50%) ;
+    }
+    100% {
+        transform: translateY(0) translateX(-50%) ;
+    }
+}
+
+.errorMessage{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: auto;
+    background-color: tomato;
+    color: #ffffff;
+    padding: 10px 20px;
+    animation: errorMessageAnimation 500ms forwards;
+    animation-timing-function: cubic-bezier(0.57, 0.21, 0.29, 1.57);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}

@@ -7,12 +7,12 @@ import {TableStateType} from "../../reducers/tableReducer";
 export const UserDetailsComponent = () => {
 
     const tableState = useSelector<AppRootStateType, TableStateType>(state => state.tableReducer);
-    const {user, dataArray} = tableState;
+    const {userDetailsId, dataArray} = tableState;
 
-    const userDetails = dataArray.filter(f => f.id === user)
+    const userDetails = dataArray.filter(f => f.id === userDetailsId)
         .map(m => {
             return (
-                <div className={'userDetails'}>
+                <div className={'userDetails'} key={m.id}>
                     <div className={'userDetails__line'}>
                         <div className={'userDetails__title'}>Выбран пользователь:</div>
                         <div className={'userDetails__text'}>{m.firstName} {m.lastName}</div>
@@ -45,7 +45,7 @@ export const UserDetailsComponent = () => {
     return (
         <>
             {
-                user &&
+                userDetailsId &&
                 userDetails
             }
         </>

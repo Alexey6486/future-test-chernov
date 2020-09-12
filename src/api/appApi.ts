@@ -23,9 +23,9 @@ export interface ServerResponseObjectType extends Record<string, any> {
 }
 
 export const appApi = {
-    getData() {
+    getData(rowsNumber: number) {
         return instance
-            .get<Array<ServerResponseObjectType>>(`?rows=10&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
+            .get<Array<ServerResponseObjectType>>(`?rows=${rowsNumber}&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
             .then(res => {
                 return res.data
             })
