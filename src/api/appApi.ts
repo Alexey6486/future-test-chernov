@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://www.filltext.com/',
+    baseURL: 'https://www.filltext.com/',
     headers: {
-
+        'Access-Control-Allow-Origin': '*'
     }
 });
 
