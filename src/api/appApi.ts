@@ -1,10 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://www.filltext.com/',
-    headers: {
-        'Access-Control-Allow-Origin': '*'
-    }
+    baseURL: 'https://cors-anywhere.herokuapp.com/http://www.filltext.com/',
+
 });
 
 export interface ServerResponseObjectType extends Record<string, any> {
