@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://www.filltext.com/',
+    baseURL: 'http://www.filltext.com/',
+    headers: {
 
+    }
 });
 
 export interface ServerResponseObjectType extends Record<string, any> {
