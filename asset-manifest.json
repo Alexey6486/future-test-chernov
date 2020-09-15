@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/future-test-chernov/static/css/main.584a340e.chunk.css",
-    "main.js": "/future-test-chernov/static/js/main.14694282.chunk.js",
-    "main.js.map": "/future-test-chernov/static/js/main.14694282.chunk.js.map",
+    "main.js": "/future-test-chernov/static/js/main.1135c7bf.chunk.js",
+    "main.js.map": "/future-test-chernov/static/js/main.1135c7bf.chunk.js.map",
     "runtime-main.js": "/future-test-chernov/static/js/runtime-main.48603634.js",
     "runtime-main.js.map": "/future-test-chernov/static/js/runtime-main.48603634.js.map",
     "static/js/2.6db725ef.chunk.js": "/future-test-chernov/static/js/2.6db725ef.chunk.js",
     "static/js/2.6db725ef.chunk.js.map": "/future-test-chernov/static/js/2.6db725ef.chunk.js.map",
     "index.html": "/future-test-chernov/index.html",
-    "precache-manifest.8a35557dbbc3ce5574136a978fa129cb.js": "/future-test-chernov/precache-manifest.8a35557dbbc3ce5574136a978fa129cb.js",
+    "precache-manifest.81bf6c0cb3f81425d2f349623f48e103.js": "/future-test-chernov/precache-manifest.81bf6c0cb3f81425d2f349623f48e103.js",
     "service-worker.js": "/future-test-chernov/service-worker.js",
     "static/css/main.584a340e.chunk.css.map": "/future-test-chernov/static/css/main.584a340e.chunk.css.map",
     "static/js/2.6db725ef.chunk.js.LICENSE.txt": "/future-test-chernov/static/js/2.6db725ef.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.48603634.js",
     "static/js/2.6db725ef.chunk.js",
     "static/css/main.584a340e.chunk.css",
-    "static/js/main.14694282.chunk.js"
+    "static/js/main.1135c7bf.chunk.js"
   ]
 }
